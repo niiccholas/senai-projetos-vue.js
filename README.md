@@ -135,6 +135,27 @@ export async function getRandomDog() {
   }
 }
 ```
+```javascript
+// Função no App.vue para pegar input e coloca o GET numa lista
+async function addInputDogs(breed) {
+
+  list.value = []
+  const images = await getDogsByBreed(breed)
+  if(images){
+    list.value.push(...shuffleArray(images))
+  }
+}
+```
+```html
+<!-- Colocando imagem na tela com v-for e :src, utilizando a key = "index" de identificador -->
+ <section id="galeria">
+  <div id="galeriaItem" v-for="(item, index) in list" :key="index">
+    <img :src="item" alt="">
+  </div>
+ </section>
+```
+
+
 
 ### Mais informações sobre o Consumo de API:
 [Consumindo uma API com Vue.js e Axios](https://www.devmedia.com.br/consumindo-uma-api-com-vue-js-e-axios/42974)
